@@ -11,16 +11,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Date;
 
-@SpringBootApplication
-public class DatabaseDemoApplication implements CommandLineRunner {
+//@SpringBootApplication
+public class SpringJdbcDemoApplication implements CommandLineRunner {
 
-    private Logger logger = LoggerFactory.getLogger(DatabaseDemoApplication.class);
+    private Logger logger = LoggerFactory.getLogger(SpringJdbcDemoApplication.class);
 
     @Autowired
     PersonJdbcDao dao;
 
     public static void main(String[] args) {
-        SpringApplication.run(DatabaseDemoApplication.class, args);
+        SpringApplication.run(SpringJdbcDemoApplication.class, args);
     }
 
     @Override
@@ -28,8 +28,8 @@ public class DatabaseDemoApplication implements CommandLineRunner {
         logger.info("All users -> {}", dao.findAll());
         logger.info("User id 10001 -> {}", dao.findByID(10001));
         logger.info("Deleting 10002 -> Number of rows deleted {}", dao.deleteById(10002));
-        logger.info("Inserting 10004 -> {}", dao.insert(new Person(10004, "Lara", "Bucharest", new Date())));
-        logger.info("Update 10003 -> {}", dao.update(new Person(10003,"Modified Name", "Paris", new Date())));
+        logger.info("Inserting 10004 -> {}", dao.insert(new Person("Lara", "Bucharest", new Date())));
+        logger.info("Update 10003 -> {}", dao.update(new Person("Modified Name", "Paris", new Date())));
 
     }
 

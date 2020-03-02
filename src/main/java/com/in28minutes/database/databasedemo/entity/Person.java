@@ -1,16 +1,28 @@
 package com.in28minutes.database.databasedemo.entity;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@NamedQuery(name = "find_all_persons", query = "select p from Person p")
 public class Person {
 
+    @Id
+    @GeneratedValue
     private int id;
+
     private String name;
     private String location;
     private Date birth_date;
 
     public Person() {
 
+    }
+
+    public Person(String name, String location, Date birth_date) {
+        this.name = name;
+        this.location = location;
+        this.birth_date = birth_date;
     }
 
     public Person(int id, String name, String location, Date birth_date) {
